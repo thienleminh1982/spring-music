@@ -1,6 +1,22 @@
 Spring Music
 ============
+Original git repo: https://github.com/cloudfoundry-samples/spring-music
 
+Modified by: **Minh-Thien Le**
+
+Time spent: **** hours spent in total
+
+Deployed URL: ****
+
+## User Stories
+
+The following **original** functionality is complete and working in the original git repo:
+
+## Video Walkthrough
+
+Here's a walk-through of implemented user stories: **spring-music-walkthrough.gif**
+
+## Original instruction
 This is a sample application for using database services on [Cloud Foundry](http://cloudfoundry.com)
 with the [Spring Framework](http://www.springframework.org).
 
@@ -118,3 +134,30 @@ Database drivers for MySQL, Postgres, MongoDB, and Redis are included in the pro
 you will need to download the appropriate driver (e.g. from http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-112010-090769.html?ssSourceSiteId=otnjp),
 add the driver .jar file to the `src/main/webapp/WEB-INF/lib` directory in the project, and re-build the
 application .war file using `./gradlew assemble`.
+
+## Demo deployment on PWS 
+
+```
+0. Ensure that the "sping-music" has been pushed successfully to PWS
+1. Prepare empty database services:
+	1.1. Create PostgreSQL instance
+		cf create-service elephantsql turtle psql-sm
+	1.2. Create MySQL instance
+		cf create-service elephantsql turtle mysql-sm
+	1.3. Create Mongodb instance
+		cf create-service mongolab sandbox mongo-sm		
+2. Connect to PostgreSQL service
+	cf bind-service spring-music psql-sm
+	cf restart spring-music
+	cf unbind-service spring-music psql-sm
+3. Connect to MySQL service
+	cf bind-service spring-music mysql-sm
+	cf restart spring-music
+	cf unbind-service spring-music mysql-sm
+3. Connect to Mongodb service
+	cf bind-service spring-music mongo-sm
+	cf restart spring-music	
+	cf unbind-service spring-music mongo-sm
+```
+
+

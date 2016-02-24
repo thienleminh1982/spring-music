@@ -2,6 +2,7 @@
 applications:
 - name: spring-music
   memory: 512M
+  buildpack: java_buildpack
   instances: 1
   host: spring-music-${random-word}
   path: build/libs/spring-music.war
